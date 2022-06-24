@@ -1,0 +1,68 @@
+<template>
+  <div class="especialidade">
+    <section class="hero">
+      <div class="hero-body py-5 pt-6">
+        <p class="title">Especialidades</p>
+      </div>
+    </section>
+
+    <section class="hero">
+      <div class="hero-body columns py-4">
+        <div class="column is-four-fifths">
+          <input
+            class="input is-link"
+            type="text"
+            placeholder="Pesquisa por nome"
+          />
+        </div>
+        <div class="column buttons is-one-fifth">
+          <button class="button is-link">+ Cadastrar nova especialidade</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="is-flex is-justify-content-start ml-6 my-5">
+      <table class="table table is-striped">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Cadastrado em</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Cardiologista</th>
+            <th>12/05/2021</th>
+            <td>
+              <div class="column buttons is-one-fifth">
+                <button class="button is-link is-outlined">Detalhar</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Neurologista</th>
+            <th>12/05/2021</th>
+
+            <td>
+              <div class="column buttons is-one-fifth">
+                <button class="button is-link is-outlined">Detalhar</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Otorrinolaringologista</th>
+            <th>12/05/2021</th>
+
+            <td>
+              <div class="column buttons is-one-fifth">
+                <button class="button is-link is-outlined">Detalhar</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</template>

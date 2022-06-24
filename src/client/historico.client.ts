@@ -4,7 +4,7 @@ import { PageResponse } from "./../model/page/page-response";
 import axios, { AxiosInstance } from "axios";
 import { PageRequest } from "@/model/page/page-request";
 
-export class EspecialidadeClient {
+export class HistoricoClient {
   private axiosClient: AxiosInstance;
 
   constructor() {
