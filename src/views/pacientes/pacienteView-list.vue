@@ -16,13 +16,16 @@
           />
         </div>
         <div class="column buttons is-one-fifth">
-          <button class="button is-link">+ Cadastrar novo paciente</button>
+         <button class="button is-link">
+            <router-link to="/pacientes-new">+ Cadastrar novo paciente</router-link>
+
+          </button>
         </div>
       </div>
     </section>
 
     <div class="is-flex is-justify-content-start ml-6 my-5">
-      <table class="table table is-striped">
+      <table class="table table is-fullwidth">
         <thead>
           <tr>
             <th>Nome</th>

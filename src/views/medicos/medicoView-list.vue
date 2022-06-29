@@ -1,5 +1,5 @@
 <template>
-  <div class="medico">
+  <div class="medico is-fullwidth">
     <section class="hero">
       <div class="hero-body py-5 pt-6">
         <p class="title">Medicos</p>
@@ -9,20 +9,19 @@
     <section class="hero">
       <div class="hero-body columns py-4">
         <div class="column is-four-fifths">
-          <input
-            class="input is-link"
-            type="text"
-            placeholder="Pesquisa por nome"
-          />
+          <input class="input is-link" type="text" placeholder="Pesquisa por nome" />
         </div>
         <div class="column buttons is-one-fifth">
-          <button class="button is-link">+ Cadastrar novo medico</button>
+          <button class="button is-link">
+            <router-link to="/medicos-new">+ Cadastrar novo medico</router-link>
+
+          </button>
         </div>
       </div>
     </section>
 
     <div class="is-flex is-justify-content-start ml-6 my-5">
-      <table class="table table is-striped">
+      <table class="table table is-fullwidth">
         <thead>
           <tr>
             <th>Nome</th>

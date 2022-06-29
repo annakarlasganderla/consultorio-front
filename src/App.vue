@@ -25,12 +25,12 @@
       </ul>
       <p class="menu-label pl-5">Administrativo</p>
       <ul class="menu-list pl-6 has-text-weight-semibold">
-        <li><router-link to="/especialidade">Especialidades</router-link></li>
+        <li><router-link to="/especialidades">Especialidades</router-link></li>
         <li><router-link to="/convenio">Convênios</router-link></li>
       </ul>
     </aside>
 
-    <div class="column is-one">
+    <div class="column is-fullwidth">
       <router-view></router-view>
     </div>
   </div>
