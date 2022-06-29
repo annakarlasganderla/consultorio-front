@@ -30,10 +30,10 @@
     <div class="columns">
         <div class="column is-8"></div>
         <div class="column is-2">
-            <a href="/especialidade/listar" class="button is-fullwidth">Voltar</a>
+            <a href="-1" class="button is-fullwidth">Voltar</a>
         </div>
         <div class="column is-2">
-            <button class="button is-fullwidth is-link" @click="onClickCadastrar()">Success</button>
+            <button class="button is-fullwidth is-link" @click="postEspecialidade()">Cadastrar</button>
         </div>
     </div>
 </template>
@@ -53,14 +53,14 @@
             this.especialidadeClient = new EspecialidadeClient()
         }
         
-        public onClickCadastrar(): void {
+        public postEspecialidade(): void {
             this.especialidadeClient.postEspecialidade(this.especialidade)
-                .then(
-                () => {
+                .then(() => {
                     this.notification = this.notification.new(true, 'notification is-success', 'Especialidade Cadastrada com sucesso!!!')
                     this.onClickLimpar()
                 }, error => {
-                    this.notification = this.notification.new(true, 'notification is-danger', 'Erro ao cadastrar especialidade: ' + error)
+                    this.notification = this.notification.new(true, 'notification is-danger', 'Erro ao cadastrar especialidade')
+                    console.error(error)
                     this.onClickLimpar()
                 })
         }
