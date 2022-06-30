@@ -67,9 +67,9 @@ export default class ConvenioList extends Vue {
   conenioClient!: ConvenioClient
   public mounted(): void {
     this.conenioClient = new ConvenioClient()
-    this.listarEspecialidade()
+    this.getConvenios()
   }
-  listarEspecialidade(): void {
+  getConvenios(): void {
     this.conenioClient.getConvenios(this.pageRequest)
       .then(
         success => {

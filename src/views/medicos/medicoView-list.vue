@@ -73,7 +73,7 @@ export default class MedicoList extends Vue {
     this.getMedicos()
   }
 
-  getMedicos(): void {
+  public getMedicos(): void {
     this.medicoClient.getMedicos(this.pageRequest).then((success) => {
       this.pageResponse = success;
       this.medicoList = this.pageResponse.content
