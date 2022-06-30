@@ -62,14 +62,15 @@ export default class EspecialidadeList extends Vue {
   especialidadeClient!: EspecialidadeClient
   public mounted(): void {
     this.especialidadeClient = new EspecialidadeClient()
-    this.listarEspecialidade()
+    this.getEspecialidade()
   }
-  listarEspecialidade(): void {
+  getEspecialidade(): void {
     this.especialidadeClient.getEspecialidades(this.pageRequest)
       .then(
         success => {
           this.pageResponse = success
           this.especialidadeList = this.pageResponse.content
+          console.log(this.especialidadeList)
         },
         error => console.log(error)
       )

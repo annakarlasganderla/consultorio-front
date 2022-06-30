@@ -33,36 +33,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>Fulano da silva</th>
-            <th>123.000.458-86</th>
-            <th>Cardiologista</th>
-            <th>R$ 400,00</th>
-            <th>Vila mariana</th>
-            <td>
-              <div class="column buttons is-one-fifth">
-                <button class="button is-link is-outlined">Detalhar</button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>Fulano da silva</th>
-            <th>123.000.458-86</th>
-            <th>Cardiologista</th>
-            <th>R$ 400,00</th>
-            <th>Vila mariana</th>
-            <td>
-              <div class="column buttons is-one-fifth">
-                <button class="button is-link is-outlined">Detalhar</button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>Fulano da silva</th>
-            <th>123.000.458-86</th>
-            <th>Cardiologista</th>
-            <th>R$ 400,00</th>
-            <th>Vila mariana</th>
+          <tr v-for="item in medicoList" :key="item.id">
+            <th>{{ item.nome }}</th>
+            <th>{{ item.crm }}</th>
+            <th>{{ item.especialidade.nome }}</th>
+            <th>{{ item.valorConsulta }}</th>
+            <th>{{ item.consultorio }}</th>
             <td>
               <div class="column buttons is-one-fifth">
                 <button class="button is-link is-outlined">Detalhar</button>
@@ -75,4 +51,38 @@
 
   </div>
 </template>
+
+<script lang="ts">
+
+import { Vue } from 'vue-class-component';
+
+import { PageRequest } from '@/model/page/page-request';
+import { PageResponse } from '@/model/page/page-response';
+
+import { Medico } from '@/model/medico.model';
+import { MedicoClient } from '@/client/medico.client';
+
+export default class MedicoList extends Vue {
+  pageRequest: PageRequest = new PageRequest();
+  pageResponse: PageResponse<Medico> = new PageResponse();
+  medicoList: Medico[] = []
+  medicoClient!: MedicoClient
+
+  public mounted(): void {
+    this.medicoClient = new MedicoClient();
+    this.getMedicos()
+  }
+
+  getMedicos(): void {
+    this.medicoClient.getMedicos(this.pageRequest).then((success) => {
+      this.pageResponse = success;
+      this.medicoList = this.pageResponse.content
+
+    }).catch((error) => { console.log(error) })
+  }
+
+}
+
+
+</script>
 

@@ -1,9 +1,10 @@
 import { Pessoa } from "./pessoa.model";
+import {Especialidade} from './especialidade.model'
 
 export class Medico extends Pessoa {
     crm!: string;
     consultorio! : string;
-    porcetangem_participacao!: number;
-    valor_consulta! : number;
-    especialidade! : [];
+    porcentagemParticipacao!: number;
+    valorConsulta! : number;
+    especialidade! : Especialidade;
 }
