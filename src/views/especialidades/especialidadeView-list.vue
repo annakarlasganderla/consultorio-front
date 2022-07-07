@@ -34,8 +34,8 @@
             <th>{{ item.nome }}</th>
             <th>{{ item.cadastro }}</th>
             <td>
-              <div class="column buttons is-one-fifth">
-                <button class="button is-link is-outlined">Detalhar</button>
+              <div class="column  buttons ">
+                <button class="button is-link is-outlined" @click="getEspecialidadeById(item.id)">Detalhar</button>
               </div>
             </td>
           </tr>
@@ -64,16 +64,20 @@ export default class EspecialidadeList extends Vue {
     this.especialidadeClient = new EspecialidadeClient()
     this.getEspecialidade()
   }
-  getEspecialidade(): void {
+  public getEspecialidade(): void {
     this.especialidadeClient.getEspecialidades(this.pageRequest)
       .then(
         success => {
           this.pageResponse = success
           this.especialidadeList = this.pageResponse.content
-          console.log(this.especialidadeList)
         },
         error => console.log(error)
       )
   }
+
+  public getEspecialidadeById(idEspecialidade: number) {
+    this.$router.push({ name: 'especialidade-detalhar', params: { id: idEspecialidade, model: 'detalhar' } })
+  }
+
 }
 </script>

@@ -22,6 +22,12 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/especialidades/especialidadeView-new.vue')
   },
   {
+    path: '/especialidades-detalhar/:model/:id',
+    name: 'especialidade-detalhar',
+    props: (router) => ({id: router.params.id, model: router.params.model}),
+    component: () => import('../views/especialidades/especialidadeView-new.vue')
+  },
+  {
     path: '/convenio',
     name: 'convenio',
     component: () => import('../views/convenios/convenioView-list.vue')
@@ -29,6 +35,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/convenios-new',
     name: 'convenios-new',
+    component: () => import('../views/convenios/convenioView-new.vue')
+  },
+  {
+    path: '/convenios-detalhar/:model/:id',
+    name: 'convenios-detalhar',
+    props: (router) => ({id: router.params.id, model: router.params.model}),
     component: () => import('../views/convenios/convenioView-new.vue')
   },
   {

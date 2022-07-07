@@ -34,11 +34,11 @@
         <tbody>
           <tr v-for="item in convenioList" :key="item.id">
             <th>{{ item.nome }}</th>
-            <th>{{ `R$ ${item.valor.toLocaleString('pt-br', { minimumFractionDigits: 2 })}`  }}</th>
+            <th>{{ `R$ ${item.valor.toLocaleString('pt-br', { minimumFractionDigits: 2 })}` }}</th>
             <th>{{ item.cadastro }}</th>
             <td>
               <div class="column buttons is-one-fifth">
-                <button class="button is-link is-outlined">Detalhar</button>
+                <button class="button is-link is-outlined" @click="getConvenioById(item.id)">Detalhar</button>
               </div>
             </td>
           </tr>
@@ -80,5 +80,10 @@ export default class ConvenioList extends Vue {
         error => console.log(error)
       )
   }
+
+  getConvenioById(idCovenio: number): void {
+    this.$router.push({ name: 'convenio-detalhar', params: { id: idCovenio, model: 'detalhar' } })
+  }
+
 }
 </script>

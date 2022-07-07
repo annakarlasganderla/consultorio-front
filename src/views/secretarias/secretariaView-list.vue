@@ -29,24 +29,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>Fulano da silva</th>
-            <td>
-              <div class="column buttons is-one-fifth">
-                <button class="button is-link is-outlined">Detalhar</button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>Fulano da silva</th>
-            <td>
-              <div class="column buttons is-one-fifth">
-                <button class="button is-link is-outlined">Detalhar</button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>Fulano da silva</th>
+          <tr v-for="item in secretariaList" :key="item.id">
+            <th>{{ item.nome }}</th>
             <td>
               <div class="column buttons is-one-fifth">
                 <button class="button is-link is-outlined">Detalhar</button>
@@ -59,4 +43,36 @@
 
   </div>
 </template>
+
+<script lang="ts">
+import { Vue } from 'vue-class-component';
+
+import { PageRequest } from '@/model/page/page-request';
+import { PageResponse } from '@/model/page/page-response';
+
+import { Secretaria } from '@/model/secretaria.model';
+import { SecretariaClient } from '@/client/secretaria.client';
+
+export default class SecretariaList extends Vue {
+  pageRequest: PageRequest = new PageRequest();
+  pageResponse: PageResponse<Secretaria> = new PageResponse();
+
+  secretariaList: Secretaria[] = []
+  secretariaClient!: SecretariaClient
+
+  public mounted(): void {
+    this.secretariaClient = new SecretariaClient();
+    this.getSecretarias()
+  }
+
+  public getSecretarias(): void {
+    this.secretariaClient.getSecretarias(this.pageRequest).then((success) => {
+      this.pageResponse = success;
+      this.secretariaList = this.pageResponse.content
+    }).catch((error) => { console.log(error) })
+  }
+
+}
+
+</script>
 

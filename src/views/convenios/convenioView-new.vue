@@ -48,14 +48,28 @@
     import { Convenio } from '@/model/convenio.model'
     import { Notification } from '@/model/notification.model'
     import { ConvenioClient } from '@/client/convenio.client'
+import { Prop } from 'vue-property-decorator';
     
     export default class ConvenioForm extends Vue {
          convenioClient!: ConvenioClient
          convenio : Convenio = new Convenio()
          notification : Notification = new Notification()
-    
+
+         @Prop({type: Number, required: false})
+         readonly id!: number
+
+         @Prop({type:String, required: false})
+         readonly model!: string
+
         public mounted(): void {
             this.convenioClient = new ConvenioClient()
+
+            if (this.id) {
+                this.getById(this.id)
+            }
+
+            console.log(this.id)
+            console.log(this.model)
         }
         
         public postConvenio(): void {
@@ -69,6 +83,12 @@
                     this.onClickLimpar()
                 })
         }
+
+
+        public getById(id: number): void {
+            this.convenioClient.getConveniosById(id).then((success) => {this.convenio = success})
+        }
+
         public onClickFecharNotificacao(): void {
             this.notification = new Notification()
         }

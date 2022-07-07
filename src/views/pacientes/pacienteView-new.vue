@@ -190,7 +190,7 @@ export default class PacienteForm extends Vue {
             this.onClickLimpar()
         }).catch((error) => {
             console.log(error);
-            this.notification = this.notification.new(true, 'notification is-success', 'Erro ao cadastrar paciente!!')
+            this.notification = this.notification.new(true, 'notification is-danger', 'Erro ao cadastrar paciente!!')
             this.onClickLimpar()
         })
     }
